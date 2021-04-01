@@ -261,12 +261,12 @@ public class ManageMenu extends javax.swing.JPanel {
             int selectionResult = JOptionPane.showConfirmDialog(null, "Confirm delete??","Warning",selectionButton);
             if(selectionResult == JOptionPane.YES_OPTION){
                 
-//                for(Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()){
-//                    if(restro.getUserName().equals(account.getUsername())){
-//                        ecosystem.getRestaurantDirectory().DeleteDishes(restro, menu);
-//                    }   
-//                }
-//                populateFoodCatalogue();
+                for(Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()){
+                    if(restro.getUserName().equals(account.getUsername())){
+                        ecosystem.getRestaurantDirectory().DeleteDishes(restro, menu);
+                    }   
+                }
+                populateFoodCatalogue();
             }
         }
         else
