@@ -72,9 +72,10 @@ public class ManageOrders extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrderDetail = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
-        btnAssignDeliveryMan = new javax.swing.JButton();
         btnViewOrder = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
+        btnAssignDeliveryMan1 = new javax.swing.JButton();
+        btnRejectOrder = new javax.swing.JButton();
 
         tblOrderDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,15 +111,6 @@ public class ManageOrders extends javax.swing.JPanel {
             }
         });
 
-        btnAssignDeliveryMan.setBackground(new java.awt.Color(0, 0, 0));
-        btnAssignDeliveryMan.setForeground(new java.awt.Color(255, 255, 255));
-        btnAssignDeliveryMan.setText("Assign Delivery Man to Order");
-        btnAssignDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignDeliveryManActionPerformed(evt);
-            }
-        });
-
         btnViewOrder.setBackground(new java.awt.Color(0, 0, 0));
         btnViewOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnViewOrder.setText("View Order");
@@ -137,6 +129,24 @@ public class ManageOrders extends javax.swing.JPanel {
             }
         });
 
+        btnAssignDeliveryMan1.setBackground(new java.awt.Color(0, 0, 0));
+        btnAssignDeliveryMan1.setForeground(new java.awt.Color(255, 255, 255));
+        btnAssignDeliveryMan1.setText("Assign Delivery Man to Order");
+        btnAssignDeliveryMan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignDeliveryMan1ActionPerformed(evt);
+            }
+        });
+
+        btnRejectOrder.setBackground(new java.awt.Color(0, 0, 0));
+        btnRejectOrder.setForeground(new java.awt.Color(255, 255, 255));
+        btnRejectOrder.setText("Reject Order");
+        btnRejectOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectOrderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,16 +156,18 @@ public class ManageOrders extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(46, 46, 46)
                 .addComponent(btnViewOrder)
-                .addGap(18, 18, 18)
-                .addComponent(btnAssignDeliveryMan)
+                .addGap(27, 27, 27)
+                .addComponent(btnAssignDeliveryMan1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRejectOrder)
+                .addGap(163, 163, 163)
                 .addComponent(btnRefresh)
-                .addGap(34, 34, 34))
+                .addGap(48, 48, 48))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -167,28 +179,13 @@ public class ManageOrders extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssignDeliveryMan)
-                    .addComponent(btnViewOrder)
-                    .addComponent(btnRefresh))
-                .addContainerGap(152, Short.MAX_VALUE))
+                    .addComponent(btnRefresh)
+                    .addComponent(btnRejectOrder)
+                    .addComponent(btnAssignDeliveryMan1)
+                    .addComponent(btnViewOrder))
+                .addGap(76, 152, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAssignDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignDeliveryManActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblOrderDetail.getSelectedRow();
-        if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from the table to assign delivery man to the order","Warning",JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            Order order  = (Order)tblOrderDetail.getValueAt(selectedRow, 0);           
-            DeliveryManAssignment deliveryAssignment =new DeliveryManAssignment(userProcessContainer,account,order,ecosystem);
-            userProcessContainer.add("DeliveryManAssignment",deliveryAssignment);
-            CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
-        }
-        
-    }//GEN-LAST:event_btnAssignDeliveryManActionPerformed
 
     private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
         // TODO add your handling code here:
@@ -218,11 +215,36 @@ public class ManageOrders extends javax.swing.JPanel {
         populateOrderTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
+    private void btnAssignDeliveryMan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignDeliveryMan1ActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = tblOrderDetail.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table to assign delivery man to the order","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            Order order  = (Order)tblOrderDetail.getValueAt(selectedRow, 0);
+            DeliveryManAssignment deliveryAssignment =new DeliveryManAssignment(userProcessContainer,account,order,ecosystem);
+            userProcessContainer.add("DeliveryManAssignment",deliveryAssignment);
+            CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        }
+    }//GEN-LAST:event_btnAssignDeliveryMan1ActionPerformed
+
+    private void btnRejectOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectOrderActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblOrderDetail.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table to reject the order","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnRejectOrderActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAssignDeliveryMan;
+    private javax.swing.JButton btnAssignDeliveryMan1;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnRejectOrder;
     private javax.swing.JButton btnViewOrder;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblOrderDetail;
