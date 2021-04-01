@@ -173,7 +173,7 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(203, 203, 203)
                                 .addComponent(btnRegisterDeliveryMan)))))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(688, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +204,7 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
                     .addComponent(btnSave))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -28,7 +28,9 @@
               <Component id="btnAssignDeliveryMan1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="btnRejectOrder" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnAcceptOrder" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="btnRefresh" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
           </Group>
@@ -52,6 +54,7 @@
                   <Component id="btnRejectOrder" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAssignDeliveryMan1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnViewOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAcceptOrder" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="76" pref="152" max="32767" attributes="0"/>
           </Group>
@@ -181,6 +184,20 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRejectOrderActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAcceptOrder">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Accept Order"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAcceptOrderActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -94,4 +94,8 @@ public class EcoSystem extends Organization{
        //
        return false;
     }
+
+    public Object getOrderList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

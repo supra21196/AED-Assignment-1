@@ -10,6 +10,7 @@ import Business.Order.Order;
 import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -76,6 +77,7 @@ public class ManageOrders extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         btnAssignDeliveryMan1 = new javax.swing.JButton();
         btnRejectOrder = new javax.swing.JButton();
+        btnAcceptOrder = new javax.swing.JButton();
 
         tblOrderDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,6 +149,15 @@ public class ManageOrders extends javax.swing.JPanel {
             }
         });
 
+        btnAcceptOrder.setBackground(new java.awt.Color(0, 0, 0));
+        btnAcceptOrder.setForeground(new java.awt.Color(255, 255, 255));
+        btnAcceptOrder.setText("Accept Order");
+        btnAcceptOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptOrderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,7 +173,9 @@ public class ManageOrders extends javax.swing.JPanel {
                 .addComponent(btnAssignDeliveryMan1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRejectOrder)
-                .addGap(163, 163, 163)
+                .addGap(18, 18, 18)
+                .addComponent(btnAcceptOrder)
+                .addGap(24, 24, 24)
                 .addComponent(btnRefresh)
                 .addGap(48, 48, 48))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -182,7 +195,8 @@ public class ManageOrders extends javax.swing.JPanel {
                     .addComponent(btnRefresh)
                     .addComponent(btnRejectOrder)
                     .addComponent(btnAssignDeliveryMan1)
-                    .addComponent(btnViewOrder))
+                    .addComponent(btnViewOrder)
+                    .addComponent(btnAcceptOrder))
                 .addGap(76, 152, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -232,15 +246,50 @@ public class ManageOrders extends javax.swing.JPanel {
 
     private void btnRejectOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectOrderActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tablemodel = (DefaultTableModel) tblOrderDetail.getModel();
+        
         int selectedRow = tblOrderDetail.getSelectedRow();
-        if(selectedRow<0){
+        if(selectedRow<0)
+        {
             JOptionPane.showMessageDialog(null,"Please select a row from the table to reject the order","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+               tablemodel.removeRow(selectedRow);
         }
         
     }//GEN-LAST:event_btnRejectOrderActionPerformed
 
+    private void btnAcceptOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptOrderActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRow = tblOrderDetail.getSelectedRow();
+        DefaultTableModel tablemodel = (DefaultTableModel) tblOrderDetail.getModel();
+        if (selectedRow < 0) {
+            return;
+        }
+        for (Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()) {
+           
+            if (restro.getUserName().equals(account.getUsername())) {
+                restro.getOrderList().get(selectedRow).setStatus("Accepted");
+                
+                Object[] row = new Object[5];
+                row[0] = restro.getOrderList().get(selectedRow);
+                row[1] = restro.getOrderList().get(selectedRow).getCustomerName();
+                row[2] = restro.getOrderList().get(selectedRow).getDeliveryAddress();
+                row[3] = restro.getOrderList().get(selectedRow).getPrice();
+                row[4] = restro.getOrderList().get(selectedRow).getStatus();
+                tablemodel.addRow(row);
+                return;
+                
+            }
+            
+        }
+    }//GEN-LAST:event_btnAcceptOrderActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAcceptOrder;
     private javax.swing.JButton btnAssignDeliveryMan1;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRefresh;

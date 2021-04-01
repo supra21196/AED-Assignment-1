@@ -3,10 +3,8 @@
  * and open the template in the editor.
  */
 package userinterface;
-
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
-
 import Business.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
