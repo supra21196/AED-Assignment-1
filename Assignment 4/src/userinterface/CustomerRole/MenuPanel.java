@@ -90,13 +90,13 @@ public class MenuPanel extends javax.swing.JPanel {
                 }
     }
     
-    public void backback(){
-        
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-        
-    }
+//    public void backback(){
+//        
+//        userProcessContainer.remove(this);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.previous(userProcessContainer);
+//        
+//    }
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -264,7 +264,14 @@ public class MenuPanel extends javax.swing.JPanel {
         {
             JOptionPane.showMessageDialog(null,"Your Cart is Empty","Warning",JOptionPane.WARNING_MESSAGE);
         }
-        else
+        
+        else if(txtAddress.getText().equals("") ){
+            
+                JOptionPane.showMessageDialog(null, "Please enter your location");
+            
+    }
+        else 
+            
         {
         String address=txtAddress.getText();
         restaurant.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);

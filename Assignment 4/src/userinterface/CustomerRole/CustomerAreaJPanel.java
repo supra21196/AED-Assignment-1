@@ -62,7 +62,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
          
         for (Customer cust:ecosystem.getCustomerDirectory().getCustomerDirectory()) {
            if (cust.getUserName().equals(account.getUsername())) {
-               // System.out.println(restro.getOrderList());
+               
                for(Order menu:cust.getOrderList()){
                 Object[] row = new Object[4];
                 row[0] = menu;

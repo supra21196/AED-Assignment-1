@@ -279,7 +279,7 @@ public class ManageOrders extends javax.swing.JPanel {
                 row[2] = restro.getOrderList().get(selectedRow).getDeliveryAddress();
                 row[3] = restro.getOrderList().get(selectedRow).getPrice();
                 row[4] = restro.getOrderList().get(selectedRow).getStatus();
-                tablemodel.addRow(row);
+//                tablemodel.addRow(row);
                 return;
                 
             }

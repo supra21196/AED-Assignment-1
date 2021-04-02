@@ -127,7 +127,7 @@ public class ManageRestaurants extends javax.swing.JPanel {
 
         btnRestrauntAdmin.setBackground(new java.awt.Color(0, 0, 0));
         btnRestrauntAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        btnRestrauntAdmin.setText("Restraunt registration");
+        btnRestrauntAdmin.setText("Restaurant registration");
         btnRestrauntAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRestrauntAdminActionPerformed(evt);
@@ -212,17 +212,31 @@ public class ManageRestaurants extends javax.swing.JPanel {
 
     private void btnRestrauntAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestrauntAdminActionPerformed
         // TODO add your handling code here:
-        if(ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(txtUserName.getText())){
-            UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(txtName.getText(), txtUserName.getText(), txtPassword.getText(), null, new AdminRole());
-        Restaurant restaurant = ecosystem.getRestaurantDirectory().createUserAccount(txtUserName.getText());
-        populateRestrauntTable();
-        txtName.setText("");
-        txtUserName.setText("");
-        txtPassword.setText("");
+        
+        //System.out.println("This is a = "+a);
+        if(txtName.getText().equals("") || txtUserName.getText().equals("") || txtPassword.getText().equals("")){
+            
+                JOptionPane.showMessageDialog(null, "Text fields are empty");
+            
         }
         else{
-            JOptionPane.showMessageDialog(null, "Username is not unique");
+            
+            if(ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(txtUserName.getText())){
+                UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(txtName.getText(), txtUserName.getText(), txtPassword.getText(), null, new AdminRole());
+                Restaurant restaurant = ecosystem.getRestaurantDirectory().createUserAccount(txtUserName.getText());
+                populateRestrauntTable();
+                txtName.setText("");
+                txtUserName.setText("");
+                txtPassword.setText("");
         }
+            else
+            {
+                
+                JOptionPane.showMessageDialog(null, "Username is not unique");
+            }
+            
+        }
+        
     }//GEN-LAST:event_btnRestrauntAdminActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed

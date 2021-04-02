@@ -7,6 +7,7 @@ package Business.UserAccount;
 import Business.Employee.Employee;
 import Business.Role.Role;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,7 +30,12 @@ public class UserAccountDirectory {
             if (ua.getUsername().equals(username) && ua.getPassword().equals(password)){
                 return ua;
             }
+           
+               
+        JOptionPane.showMessageDialog(null, "Invalid Credentials","warning",JOptionPane.WARNING_MESSAGE);
+            
         return null;
+            
     }
     
     public UserAccount createUserAccount(String name, String username, String password, Employee employee, Role role){

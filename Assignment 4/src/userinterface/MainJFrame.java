@@ -124,12 +124,20 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
+     if(userNameJTextField.getText().equals("") || passwordField.getText().equals("")){
+            
+                JOptionPane.showMessageDialog(null, "Text fields are empty");
+            
+     }
+     else{
+        
         UserAccount useraccount = system.getUserAccountDirectory().authenticateUser(userNameJTextField.getText(), passwordField.getText());
         
         CardLayout crdLyt = (CardLayout) container.getLayout();
         container.add("Login", useraccount.getRole().createWorkArea(container, useraccount, system));
         crdLyt.next(container);
         logoutJButton.setEnabled(true);
+     }  
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed

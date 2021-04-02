@@ -206,6 +206,15 @@ public class ManageCustomers extends javax.swing.JPanel {
 
     private void btnCreateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCustomerActionPerformed
         // TODO add your handling code here:
+        
+      if(txtName.getText().equals("") || txtUserName.getText().equals("") || txtPassword.getText().equals("")){
+            
+                JOptionPane.showMessageDialog(null, "Text fields are empty");
+            
+      }
+      else
+      {
+        
         if(ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(txtUserName.getText())){
             UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(txtName.getText(), txtUserName.getText(), txtPassword.getText(), null, new CustomerRole());
             Customer customer = ecosystem.getCustomerDirectory().createUserAccount(txtUserName.getText());
@@ -222,7 +231,7 @@ public class ManageCustomers extends javax.swing.JPanel {
         {
             JOptionPane.showMessageDialog(null, "Username is not unique");
         }
-        
+     }  
        
     }//GEN-LAST:event_btnCreateCustomerActionPerformed
 

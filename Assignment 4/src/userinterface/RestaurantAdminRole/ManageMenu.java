@@ -232,7 +232,15 @@ public class ManageMenu extends javax.swing.JPanel {
 
     private void btnAddFoodItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFoodItemActionPerformed
         // TODO add your handling code here:
-        for(Restaurant restro : ecosystem.getRestaurantDirectory().getRestaurantDirectory()){
+     if(txtFoodName.getText().equals("") || txtFoodDescription.getText().equals("") || txtPrice.getText().equals("")){
+            
+                JOptionPane.showMessageDialog(null, "Text fields are empty");
+            
+    }
+    
+    else
+         {
+          for(Restaurant restro : ecosystem.getRestaurantDirectory().getRestaurantDirectory()){
             if(restro.getUserName().equals(account.getUsername())){
                 menu = ecosystem.getRestaurantDirectory().AddMenuDishes(restro, txtFoodName.getText(), txtFoodDescription.getText(), txtPrice.getText());
                 populateFoodCatalogue();
@@ -246,7 +254,7 @@ public class ManageMenu extends javax.swing.JPanel {
             }
              
         }
-        
+       } 
 //        populateFoodCatalogue();
         
     }//GEN-LAST:event_btnAddFoodItemActionPerformed
