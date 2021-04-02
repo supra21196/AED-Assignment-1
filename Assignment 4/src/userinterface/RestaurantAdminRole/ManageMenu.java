@@ -261,7 +261,8 @@ public class ManageMenu extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-         int selectedRow = tblMenuCatalogue.getSelectedRow();
+        int selectedRow = tblMenuCatalogue.getSelectedRow();
+        
         if(selectedRow>= 0)
         {
             int selectionButton = JOptionPane.YES_NO_OPTION;

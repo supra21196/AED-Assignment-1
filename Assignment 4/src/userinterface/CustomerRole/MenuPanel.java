@@ -64,6 +64,7 @@ public class MenuPanel extends javax.swing.JPanel {
         
          items.add(dishitem);
          Object[] row = new Object[3];
+         sum = 0;
                 for(Dishes dish:items){
                      row[0] = dish;
                      row[1] = dish.getDescription();
@@ -72,6 +73,8 @@ public class MenuPanel extends javax.swing.JPanel {
                      tablemodel.addRow(row);
                      
                 }
+          String s = String.valueOf(sum);
+          total.setText("$" + s);
     }
     
     public void populateCartRemove(Dishes dishitem){
@@ -80,6 +83,7 @@ public class MenuPanel extends javax.swing.JPanel {
         
          items.remove(dishitem);
          Object[] row = new Object[3];
+         sum = 0;
                 for(Dishes dish:items){
                      row[0] = dish;
                      row[1] = dish.getDescription();
@@ -88,6 +92,8 @@ public class MenuPanel extends javax.swing.JPanel {
                      tablemodel.addRow(row);
 //                     System.out.println(dish.getDescription());
                 }
+          String s = String.valueOf(sum);
+          total.setText("$" + s);      
     }
     
 //    public void backback(){
@@ -110,7 +116,7 @@ public class MenuPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnOrder = new javax.swing.JButton();
-        txtAddress = new javax.swing.JTextField();
+        total = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
         valueLabel = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
@@ -122,6 +128,8 @@ public class MenuPanel extends javax.swing.JPanel {
         btnRemoveFromCart = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnOrder1 = new javax.swing.JButton();
+        txtAddress1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,7 +155,7 @@ public class MenuPanel extends javax.swing.JPanel {
             }
         });
         add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, 170, -1));
-        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 150, -1));
+        add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 150, -1));
 
         backJButton.setBackground(new java.awt.Color(0, 0, 0));
         backJButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,8 +245,8 @@ public class MenuPanel extends javax.swing.JPanel {
         add(btnRemoveFromCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Location:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 80, -1));
+        jLabel1.setText("TOTAL");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 80, -1));
 
         btnOrder1.setBackground(new java.awt.Color(0, 0, 0));
         btnOrder1.setForeground(new java.awt.Color(255, 255, 255));
@@ -249,6 +257,11 @@ public class MenuPanel extends javax.swing.JPanel {
             }
         });
         add(btnOrder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 190, -1));
+        add(txtAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 150, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("ADDRESS:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 80, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
@@ -265,7 +278,7 @@ public class MenuPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Your Cart is Empty","Warning",JOptionPane.WARNING_MESSAGE);
         }
         
-        else if(txtAddress.getText().equals("") ){
+        else if(total.getText().equals("") ){
             
                 JOptionPane.showMessageDialog(null, "Please enter your location");
             
@@ -273,7 +286,7 @@ public class MenuPanel extends javax.swing.JPanel {
         else 
             
         {
-        String address=txtAddress.getText();
+        String address=total.getText();
         restaurant.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
         for(Customer cust:ecosystem.getCustomerDirectory().getCustomerDirectory()){
             if(userAccount.getUsername().equals(cust.getUserName())){
@@ -348,13 +361,15 @@ public class MenuPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRemoveFromCart;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable tblCart;
     private javax.swing.JTable tblMenu;
-    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField total;
+    private javax.swing.JTextField txtAddress1;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }
