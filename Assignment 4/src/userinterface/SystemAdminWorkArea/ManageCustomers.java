@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author adwai
+ * @author sukhada
  */
 public class ManageCustomers extends javax.swing.JPanel {
 
@@ -209,13 +209,17 @@ public class ManageCustomers extends javax.swing.JPanel {
         if(ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(txtUserName.getText())){
             UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(txtName.getText(), txtUserName.getText(), txtPassword.getText(), null, new CustomerRole());
             Customer customer = ecosystem.getCustomerDirectory().createUserAccount(txtUserName.getText());
-            populateCustomerTable();
             txtName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");
-            
+            populateCustomerTable();
         }
-        else{
+//        else if(txtName){
+//        
+//            JOptionPane.showMessageDialog(null, "Text area cannot be blank");
+//        }
+        else
+        {
             JOptionPane.showMessageDialog(null, "Username is not unique");
         }
         

@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author adwai
+ * @author sukhada
  */
 public class ManageRestaurants extends javax.swing.JPanel {
 
@@ -42,7 +42,7 @@ public class ManageRestaurants extends javax.swing.JPanel {
     public void populateRestrauntTable(){
         
         DefaultTableModel tablemodel = (DefaultTableModel) tblRestrauntAdmin.getModel();
-        System.out.println("1");
+//        System.out.println("1");
         tablemodel.setRowCount(0);
         for(UserAccount user: ecosystem.getUserAccountDirectory().getUserAccountList()){
             
@@ -51,7 +51,7 @@ public class ManageRestaurants extends javax.swing.JPanel {
                 row[0] = user.getName();
                 row[1] = user.getUsername();
                 row[2] = user.getPassword();
-                System.out.println("2");
+//                System.out.println("2");
                 tablemodel.addRow(row);
             }
         }

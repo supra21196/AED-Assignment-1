@@ -70,8 +70,32 @@ public class MenuPanel extends javax.swing.JPanel {
                      row[2] = dish.getPrice();
                      sum=sum+Integer.parseInt(dish.getPrice());
                      tablemodel.addRow(row);
-                     System.out.println(dish.getDescription());
+                     
                 }
+    }
+    
+    public void populateCartRemove(Dishes dishitem){
+        DefaultTableModel tablemodel = (DefaultTableModel) tblCart.getModel();
+        tablemodel.setRowCount(0);
+        
+         items.remove(dishitem);
+         Object[] row = new Object[3];
+                for(Dishes dish:items){
+                     row[0] = dish;
+                     row[1] = dish.getDescription();
+                     row[2] = dish.getPrice();
+                     sum=sum+Integer.parseInt(dish.getPrice());
+                     tablemodel.addRow(row);
+//                     System.out.println(dish.getDescription());
+                }
+    }
+    
+    public void backback(){
+        
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
     }
    
     /**
@@ -97,6 +121,7 @@ public class MenuPanel extends javax.swing.JPanel {
         tblMenu = new javax.swing.JTable();
         btnRemoveFromCart = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnOrder1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,13 +140,13 @@ public class MenuPanel extends javax.swing.JPanel {
 
         btnOrder.setBackground(new java.awt.Color(0, 0, 0));
         btnOrder.setForeground(new java.awt.Color(255, 255, 255));
-        btnOrder.setText("Order");
+        btnOrder.setText("Proceed to checkout");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOrderActionPerformed(evt);
             }
         });
-        add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 100, -1));
+        add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, 170, -1));
         add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 150, -1));
 
         backJButton.setBackground(new java.awt.Color(0, 0, 0));
@@ -214,29 +239,61 @@ public class MenuPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Location:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 80, -1));
+
+        btnOrder1.setBackground(new java.awt.Color(0, 0, 0));
+        btnOrder1.setForeground(new java.awt.Color(255, 255, 255));
+        btnOrder1.setText("Cancel Order");
+        btnOrder1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrder1ActionPerformed(evt);
+            }
+        });
+        add(btnOrder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 190, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+//        if(items == null){
+//            
+//          JOptionPane.showMessageDialog(null, "Add items to your cart");
+//        
+//        }
+        DefaultTableModel tablemodel = (DefaultTableModel) tblCart.getModel();
         
+        int selectedRow = tblCart.getRowCount();
+        if(selectedRow == 0)
+        {
+            JOptionPane.showMessageDialog(null,"Your Cart is Empty","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
         String address=txtAddress.getText();
         restaurant.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
         for(Customer cust:ecosystem.getCustomerDirectory().getCustomerDirectory()){
             if(userAccount.getUsername().equals(cust.getUserName())){
                 cust.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
-                JOptionPane.showMessageDialog(null, "You Order placed successfully");
+                //JOptionPane.showMessageDialog(null, "You Order placed successfully");
+                 PaymentPanel1 paymentPanel1=new PaymentPanel1(userProcessContainer, userAccount, ecosystem, restaurant);
+                 userProcessContainer.add("PaymentPanel1",paymentPanel1);
+                 CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+                 layout.next(userProcessContainer);
+            }
             }
         }        
         
     }//GEN-LAST:event_btnOrderActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        
+        /**
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         CustomerAreaJPanel dwjp = (CustomerAreaJPanel) component;
         dwjp.populateRequestTable();
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        **/
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
         
     }//GEN-LAST:event_backJButtonActionPerformed
@@ -264,17 +321,23 @@ public class MenuPanel extends javax.swing.JPanel {
         }
         else{
             Dishes item=(Dishes)tblCart.getValueAt(selectedRow, 0);
-            items.remove(item);
-            DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
-        model.setRowCount(0);
+//            items.remove(item);
+//            DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
+//        model.setRowCount(0);
            // commented no use
+           populateCartRemove(item);
                 }  
     }//GEN-LAST:event_btnRemoveFromCartActionPerformed
+
+    private void btnOrder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrder1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOrder1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnAddToCart;
     private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnOrder1;
     private javax.swing.JButton btnRemoveFromCart;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;

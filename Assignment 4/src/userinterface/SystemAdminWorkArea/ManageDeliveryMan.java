@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author adwai
+ * @author sukhada
  */
 public class ManageDeliveryMan extends javax.swing.JPanel {
 

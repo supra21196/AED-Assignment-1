@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author adwai
+ * @author sukhada
  */
 public class ManageMenu extends javax.swing.JPanel {
 
@@ -45,10 +45,10 @@ public class ManageMenu extends javax.swing.JPanel {
         for (Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()) {
            
             if (restro.getUserName().equals(account.getUsername())) {
-                System.out.println("1");
+//                System.out.println("1");
                 if(!(restro.getMenu().isEmpty())){
                     for(Dishes menu:restro.getMenu()){
-                    System.out.println("2");
+//                    System.out.println("2");
                     Object[] row = new Object[3];
                     row[0] = menu.getName();
                     row[1] = menu.getDescription();
@@ -236,9 +236,13 @@ public class ManageMenu extends javax.swing.JPanel {
             if(restro.getUserName().equals(account.getUsername())){
                 menu = ecosystem.getRestaurantDirectory().AddMenuDishes(restro, txtFoodName.getText(), txtFoodDescription.getText(), txtPrice.getText());
                 populateFoodCatalogue();
-                txtFoodName.setText("");
-            txtFoodDescription.setText("");
-            txtPrice.setText("");
+                txtFoodName.setText(" ");
+            txtFoodDescription.setText(" ");
+            txtPrice.setText(" ");
+            }
+              else
+            {
+               JOptionPane.showMessageDialog(null, "Please select a row to proceed");
             }
              
         }

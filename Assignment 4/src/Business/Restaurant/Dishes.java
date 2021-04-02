@@ -7,7 +7,7 @@ package Business.Restaurant;
 
 /**
  *
- * @author adwai
+ * @author sukhada
  */
 public class Dishes {
     

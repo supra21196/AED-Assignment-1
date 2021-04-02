@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author adwai
+ * @author sukhada
  */
 public class ManageRestroInfo extends javax.swing.JPanel {
 

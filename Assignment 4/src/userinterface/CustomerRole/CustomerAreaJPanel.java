@@ -47,8 +47,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
          
        
                 Object[] row = new Object[3];
-                System.out.println("restaurant size...."+ecosystem.getRestaurantDirectory().getRestaurantDirectory().size());
-                //System.out.println();
+                
                 for(Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()){
                      row[0] = restro;
                      row[1] = restro.getAddress();
