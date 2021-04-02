@@ -155,6 +155,12 @@ public class MenuPanel extends javax.swing.JPanel {
             }
         });
         add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, 170, -1));
+
+        total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalActionPerformed(evt);
+            }
+        });
         add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 150, -1));
 
         backJButton.setBackground(new java.awt.Color(0, 0, 0));
@@ -257,6 +263,12 @@ public class MenuPanel extends javax.swing.JPanel {
             }
         });
         add(btnOrder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 190, -1));
+
+        txtAddress1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddress1ActionPerformed(evt);
+            }
+        });
         add(txtAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 150, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -281,8 +293,8 @@ public class MenuPanel extends javax.swing.JPanel {
         else if(total.getText().equals("") ){
             
                 JOptionPane.showMessageDialog(null, "Please enter your location");
-            
-    }
+        }   
+    
         else 
             
         {
@@ -352,6 +364,14 @@ public class MenuPanel extends javax.swing.JPanel {
     private void btnOrder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrder1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOrder1ActionPerformed
+
+    private void txtAddress1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddress1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddress1ActionPerformed
+
+    private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
